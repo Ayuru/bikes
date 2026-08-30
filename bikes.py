@@ -314,18 +314,6 @@ print(f'RMSE: {np.sqrt(mean_squared_error(y_test, predictions))}')
 
 predictions_train = final_polynomial_regression_model.predict(X_train)
 
-
-
-print('\nOstatni model:')
-print(f'Train R^2: {r2_score(y_train, predictions_train)}')
-print(f'Train MAE: {mean_absolute_error(y_train, predictions_train)}')
-print(f'Test MAE: {mean_absolute_error(y_test, predictions)}')
-print(f'Train MAPE: {mean_absolute_percentage_error(y_train, predictions_train)}')
-print(f'Test MAPE: {mean_absolute_percentage_error(y_test, predictions)}')
-print(f'Train MSE: {mean_squared_error(y_train, predictions_train)}')
-print(f'Test MSE: {mean_squared_error(y_test, predictions)}')
-print(f'Train RMSE: {np.sqrt(mean_squared_error(y_train, predictions_train))}')
-
 plt.scatter(predictions, y_test, alpha = 0.25)
 
 min_value = min(predictions.min(), y_test.min())
@@ -339,7 +327,7 @@ plt.show()
 
 errors_final = predictions - y_test
 
-plt.scatter(x=y_test, y=errors_final, alpha = 0.25)
+plt.scatter(x = y_test, y = errors_final, alpha = 0.25)
 plt.axhline(0, color = "r", linestyle = "--")
 plt.xlabel('True Valuey_test')
 plt.ylabel('Residual')
@@ -355,13 +343,14 @@ X_first = bike_data[['temp']].copy()
 y_first = bike_data[target].copy()
 
 X_train_first, X_test_first, y_train_first, y_test_first = train_test_split(
-    X_first, y_first, test_size = 0.2, shuffle=False)
+    X_first, y_first, test_size = 0.2, shuffle = False)
 
 y_predict_train_first = lr_model.predict(X_train_first)
 y_predict_test_first = lr_model.predict(X_test_first)
 
 print('\nPierwszy model:')
 print(f'Train R^2: {r2_score(y_train_first, y_predict_train_first)}')
+print(f'Test R^2: {r2_score(y_test_first, y_predict_test_first)}')
 print(f'Train MAE: {mean_absolute_error(y_train_first, y_predict_train_first)}')
 print(f'Test MAE: {mean_absolute_error(y_test_first, y_predict_test_first)}')
 print(f'Train MAPE: {mean_absolute_percentage_error(y_train_first, y_predict_train_first)}')
@@ -373,6 +362,7 @@ print(f'Test RMSE: {np.sqrt(mean_squared_error(y_test_first, y_predict_test_firs
 
 print('\nOstatni model:')
 print(f'Train R^2: {r2_score(y_train, predictions_train)}')
+print(f'Test R^2: {r2_score(y_test, predictions)}')
 print(f'Train MAE: {mean_absolute_error(y_train, predictions_train)}')
 print(f'Test MAE: {mean_absolute_error(y_test, predictions)}')
 print(f'Train MAPE: {mean_absolute_percentage_error(y_train, predictions_train)}')
@@ -381,3 +371,6 @@ print(f'Train MSE: {mean_squared_error(y_train, predictions_train)}')
 print(f'Test MSE: {mean_squared_error(y_test, predictions)}')
 print(f'Train RMSE: {np.sqrt(mean_squared_error(y_train, predictions_train))}')
 print(f'Test RMSE: {np.sqrt(mean_squared_error(y_test, predictions))}')
+
+print('\nWniosek:')
+print('Ostatni model osiąga lepsze wyniki niż pierwszy. Zarówno wyższe wartości R^2 jak i niższe MAE, MAPE, MSE i RMSE wskazują, że dokładniej przewiduje opisywane zagadnienie - co ma sens, ponieważ model ten wykorzystuje więcej informacji.')
